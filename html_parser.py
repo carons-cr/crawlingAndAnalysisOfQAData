@@ -16,6 +16,6 @@ class HtmlParser(object):
 	for tag_node in tag_nodes:
 	    new_tag = {};
 	    new_tag["tagName"] = re.search(r"[^0-9]+", tag_node.get_text()).group();
-	    new_tag["blogNumber"] = tag_node.find("em").get_text();
+	    new_tag["questionNumber"] = tag_node.find("em").get_text();
 	    tags.append(new_tag);
 	return tags;
