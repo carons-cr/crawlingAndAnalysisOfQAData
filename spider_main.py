@@ -15,7 +15,15 @@ class SpiderMain(object):
 	tags = self.htmlParser.parse_tags(html_content);	
 	self.datasOutputer.output_tags(tags);
 
+    def crawlQuestions(self, url):
+	html_content = self.htmlDownloader.download(url);
+        questions = self.htmlParser.parse_questions(html_content);
+	print questions;
+        #self.datasOutputer.output_questions(questions);
+
 if __name__ == "__main__":
     url_tag = "https://ask.csdn.net/tags";
+    url_question = "https://ask.csdn.net/java";
     spiderMain = SpiderMain();
-    spiderMain.crawlTags(url_tag);
+    #spiderMain.crawlTags(url_tag);
+    spiderMain.crawlQuestions(url_question);
