@@ -31,5 +31,5 @@ if __name__ == "__main__":
     url_tag = "https://ask.csdn.net/tags";
     url_question = "https://ask.csdn.net/java";
     spiderMain = SpiderMain();
-    #spiderMain.crawlTags(url_tag);
+    spiderMain.crawlTags(url_tag);
     spiderMain.crawlQuestions(url_question);
