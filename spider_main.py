@@ -17,7 +17,7 @@ class SpiderMain(object):
 
     def crawlQuestions(self, url):
 	questions = [];
-	for page_index in range(1, 4):
+	for page_index in range(1, 1612):
 	    try:
 	        if page_index == 1:
 	       	    new_url = url;
@@ -27,7 +27,7 @@ class SpiderMain(object):
                 new_page_questions = self.htmlParser.parse_questions(html_content);
                 questions.extend(new_page_questions);
 	    except:
-		print "craw failed";
+		print "failed" + str(page_index);
 	self.datasOutputer.output_questions(questions);
 
 if __name__ == "__main__":
