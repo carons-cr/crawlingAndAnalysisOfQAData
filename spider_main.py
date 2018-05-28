@@ -16,13 +16,20 @@ class SpiderMain(object):
        	self.datasOutputer.output_tags(tags);
 
     def crawlQuestions(self, url):
-	html_content = self.htmlDownloader.download(url);
-        questions = self.htmlParser.parse_questions(html_content);
-        self.datasOutputer.output_questions(questions);
+	questions = [];
+	for page_index in range(1, 4):
+	    if page_index == 1:
+		new_url = url;
+	    else: 
+		new_url = url + "/p" + str(page_index);
+	    html_content = self.htmlDownloader.download(new_url);
+            new_page_questions = self.htmlParser.parse_questions(html_content);
+            questions.extend(new_page_questions);
+	self.datasOutputer.output_questions(questions);
 
 if __name__ == "__main__":
     url_tag = "https://ask.csdn.net/tags";
     url_question = "https://ask.csdn.net/java";
     spiderMain = SpiderMain();
-    spiderMain.crawlTags(url_tag);
+    #spiderMain.crawlTags(url_tag);
     spiderMain.crawlQuestions(url_question);
